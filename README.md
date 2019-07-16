@@ -14,6 +14,10 @@
      - flutter run
  
 #### SS APP
-   [Screenshoot](https://drive.google.com/open?id=1qNd01KyWlcS3DmsVfB00da8BriLvJcFW)
+   ![ss1](https://i.ibb.co/L1MDdWB/Screenshot-1563290601.png)
+   ![ss2](https://i.ibb.co/gVK9k8v/Screenshot-1563290619.png)
+   ![ss3](https://i.ibb.co/JcXrSs3/Screenshot-1563290631.png)
+   
+   
  
     
