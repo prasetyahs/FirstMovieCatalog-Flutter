@@ -12,12 +12,12 @@
 #### Run App
      - open emulator or connect your device
      - flutter run
- 
-#### SS APP
-   ![ss1](https://i.ibb.co/L1MDdWB/Screenshot-1563290601.png)
-   ![ss2](https://i.ibb.co/gVK9k8v/Screenshot-1563290619.png)
-   ![ss3](https://i.ibb.co/JcXrSs3/Screenshot-1563290631.png)
-   
+
+<li>
+ <img src="https://i.ibb.co/hVkxFjr/Screenshot-1563290601.png"  width="200" height="400" />
+ <img src="https://i.ibb.co/QdwQyV8/Screenshot-1563290619.png"  width="200" height="400" />
+  <img src="https://i.ibb.co/JcXrSs3/Screenshot-1563290631.png"  width="200" height="400" />
+   </li>
    
  
     
