@@ -11,7 +11,8 @@ class MoviesPage extends StatefulWidget {
   }
 }
 
-class MoviesPageState extends State<MoviesPage> with AutomaticKeepAliveClientMixin {
+class MoviesPageState extends State<MoviesPage>
+    with AutomaticKeepAliveClientMixin {
   List<MoviesModel> listMovies = List();
   String _errorMessage;
 
@@ -72,26 +73,20 @@ class MoviesPageState extends State<MoviesPage> with AutomaticKeepAliveClientMix
           : _errorMessage == null
               ? new Center(
                   child: new CircularProgressIndicator(
-                    valueColor: new AlwaysStoppedAnimation<Color>(Colors.indigo),
+                    valueColor:
+                        new AlwaysStoppedAnimation<Color>(Colors.indigo),
                   ),
                 )
               : new Center(
-                  child: new Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      new Text("Failed Load Data"),
-                      new FlatButton.icon(
-                          onPressed: () {
-                            setRowsList();
-                            setState(() {
-                              _errorMessage = null;
-                            });
-                          },
-                          icon: Icon(Icons.refresh),
-                          label: new Text(""))
-                    ],
-                  ),
-                ),
+                  child: new FlatButton.icon(
+                      onPressed: () {
+                        setRowsList();
+                        setState(() {
+                          _errorMessage = null;
+                        });
+                      },
+                      icon: Icon(Icons.refresh),
+                      label: new Text(""))),
     );
   }
 

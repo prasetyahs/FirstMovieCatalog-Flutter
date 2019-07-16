@@ -3,7 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_app/Api/ApiRequest.dart';
 import 'package:flutter_app/model/MoviesModel.dart';
 import 'package:flutter_app/widget/RowCard.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_app/Api/Constanta.dart';
 
 class Home extends StatefulWidget {
@@ -13,7 +13,7 @@ class Home extends StatefulWidget {
   }
 }
 
-class HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
+class HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   @override
   bool get wantKeepAlive => true;
   List<MoviesModel> listTopMovies = List();
@@ -116,41 +116,13 @@ class HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                   child: CarouselSlider(
                       height: height / 3.2,
                       viewportFraction: 1.0,
-                      autoPlay: true,
                       items: listPopularMovies.map((i) {
                         return Builder(
                           builder: (BuildContext context) {
-                            return Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: new BoxDecoration(
-                                  image: new DecorationImage(
-                                      image: NetworkImage(
-                                          Constanta.BASE_URL_IMG +
-                                              i.backDropPath),
-                                      fit: BoxFit.cover)),
-                              child: new Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  new Container(
-                                    margin: EdgeInsets.symmetric(
-                                        horizontal: 20, vertical: 10),
-                                    padding: new EdgeInsets.symmetric(
-                                        horizontal: 5, vertical: 2),
-                                    decoration: new BoxDecoration(
-                                        borderRadius: new BorderRadius.all(
-                                          Radius.circular(5.0),
-                                        ),
-                                        border: new Border.all(
-                                            color: Colors.white)),
-                                    child: new Text(
-                                      "${i.voteAverage} IMDb",
-                                      style: new TextStyle(color: Colors.white),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
+                            return new CachedNetworkImage(
+                                fit: BoxFit.cover,
+                                imageUrl:
+                                    "${Constanta.BASE_URL_IMG + i.backDropPath}");
                           },
                         );
                       }).toList())),
@@ -173,11 +145,12 @@ class HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
               ),
               Expanded(
                   child: new Container(
-                      margin: EdgeInsets.only(left: 15, right: 15, top: 15),
-                      width: width,
-                      child: new ListView(
-                        children: setRowsTop(),
-                      )))
+                margin: EdgeInsets.only(left: 15, right: 15, top: 15),
+                width: width,
+                child: new ListView(
+                  children: setRowsTop(),
+                ),
+              ))
             ],
           )
         : _errorMessage == null
@@ -192,13 +165,16 @@ class HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     new Text("Failed Load Data"),
-                    new FlatButton.icon(onPressed: (){
-                      setPopularMovies();
-                      setTopRateMovies();
-                      setState(() {
-                        _errorMessage = null;
-                      });
-                    }, icon: Icon(Icons.refresh), label: new Text(""))
+                    new FlatButton.icon(
+                        onPressed: () {
+                          setPopularMovies();
+                          setTopRateMovies();
+                          setState(() {
+                            _errorMessage = null;
+                          });
+                        },
+                        icon: Icon(Icons.refresh),
+                        label: new Text(""))
                   ],
                 ),
               );

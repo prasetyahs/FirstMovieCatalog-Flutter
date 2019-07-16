@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/DetailMovies.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class RowCard extends StatelessWidget {
   final String voteAverage, title, posterPath, date, backDropPath, overView;
@@ -48,8 +49,12 @@ class RowCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     new ListTile(
-                      title: new Text(title,style: TextStyle(fontSize: height/50),),
-                      subtitle: new Text(date,style: TextStyle(fontSize: height/60)),
+                      title: new Text(
+                        title,
+                        style: TextStyle(fontSize: height / 50),
+                      ),
+                      subtitle: new Text(date,
+                          style: TextStyle(fontSize: height / 60)),
                     ),
                     new Container(
                       padding: EdgeInsets.all(5.0),
@@ -67,14 +72,10 @@ class RowCard extends StatelessWidget {
                   ],
                 ),
               ),
-              new Container(
-                width: height / 7.5,
-                decoration: new BoxDecoration(
-                    image: new DecorationImage(
-                  image: NetworkImage(posterPath),
-                  fit: BoxFit.cover,
-                )),
-              )
+              new CachedNetworkImage(
+                imageUrl: posterPath,
+                fit: BoxFit.cover,
+              ),
             ],
           ),
         ),
