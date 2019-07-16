@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Api/ApiRequest.dart';
 import 'package:flutter_app/Api/Constanta.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class DetailMovies extends StatefulWidget {
   final String voteAverage, title, posterPath, date, backDropPath, overView;
@@ -66,10 +67,13 @@ class DetailMoviesState extends State<DetailMovies> {
                   flexibleSpace: FlexibleSpaceBar(
                       centerTitle: false,
                       title: new Text("Detail Movie"),
-                      background: Image.network(
-                        "${Constanta.BASE_URL_IMG + widget.backDropPath}",
-                        fit: BoxFit.cover,
-                      )),
+                      background: new Hero(
+                          tag: "hero",
+                          child: CachedNetworkImage(
+                            imageUrl:
+                                "${Constanta.BASE_URL_IMG + widget.backDropPath}",
+                            fit: BoxFit.cover,
+                          ))),
                 ),
               ];
             },
@@ -81,9 +85,10 @@ class DetailMoviesState extends State<DetailMovies> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   new Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        width: width / 1.5,
+                        width: width / 1.7,
                         child: new Text(
                           widget.title,
                           overflow: TextOverflow.ellipsis,
