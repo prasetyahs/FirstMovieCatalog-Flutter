@@ -8,11 +8,13 @@ class ApiRequest {
   static dynamic _jsonData;
   static dynamic _listJson;
 
+  static const _API_KEY = "";
+
   static Future<List<MoviesModel>> fetchMovies(String type) async {
     List<MoviesModel> _moviesModel = List();
     try {
-      _response = await http.get(
-          "${Constanta.BASE_URL + type}?api_key=3f409df90d09bb04f75d97b5b22491d1&language=en-US");
+      _response = await http
+          .get("${Constanta.BASE_URL + type}?api_key=$_API_KEY&language=en-US");
       _jsonData = json.decode(_response.body);
       _listJson = _jsonData['results'] as List;
       for (var i in _listJson) {
@@ -38,9 +40,10 @@ class ApiRequest {
 
   static Future<List<String>> fetchGenres(int id) async {
     List<String> genres = List();
-    _response = await http.get(Constanta.BASE_URL+"movie/"+
+    _response = await http.get(Constanta.BASE_URL +
+        "movie/" +
         id.toString() +
-        "?api_key=3f409df90d09bb04f75d97b5b22491d1&language=en-US");
+        "?api_key=$_API_KEY&language=en-US");
     _jsonData = json.decode(_response.body);
     _listJson = _jsonData['genres'] as List;
     for (var i in _listJson) {
