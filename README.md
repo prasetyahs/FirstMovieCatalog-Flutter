@@ -1,16 +1,19 @@
-# flutter_app
-
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+# Movie Catalog Flutter
+ #####  GET API KEY
+    https://developers.themoviedb.org
+  
+ #####  DOCS THE MOVIE DB ENDPOINT
+    https://developers.themoviedb.org/3/getting-started/introduction
+#### Installing Package
+  Make sure this project is in your folder , then:
+ - From TERMINAL : flutter pub get.
+ - From Android Studio/IntelliJ : Click Packages get in the action ribbon at the top of pubspec.yaml.
+ - From VS CODE : Click Get Packages located in right side of the action ribbon at the top of pubspec.yaml.
+#### Run App
+     - open emulator or connect your device
+     - flutter run
+ 
+#### SS APP
+   [ScreenShoot](https://drive.google.com/open?id=1qNd01KyWlcS3DmsVfB00da8BriLvJcFW)
+ 
+    
